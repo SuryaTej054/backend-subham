@@ -31,3 +31,32 @@ build/
 
 ### VS Code ###
 .vscode/
+# Ignore Maven / Gradle build folders
+/target/
+/build/
+
+# Ignore IDE-specific files
+*.iml
+.idea/
+*.ipr
+*.iws
+.vscode/
+
+# Ignore logs and temp files
+*.log
+*.tmp
+
+# Ignore OS-specific files
+.DS_Store
+Thumbs.db
+
+# Ignore compiled files
+*.class
+
+# Ignore JAR/WAR files
+*.jar
+*.war
+
+# Ignore environment and properties secrets (optional)
+.env
+*.properties
