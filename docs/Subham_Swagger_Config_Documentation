@@ -1,0 +1,91 @@
+
+# 📄 Swagger Configuration for Subham E-Commerce
+
+This document explains the Swagger/OpenAPI configuration used in the Subham backend project.
+
+## 🔧 Purpose
+The configuration sets up the Swagger UI using **SpringDoc OpenAPI 3** to provide interactive API documentation for the Subham microservices-based e-commerce application.
+
+---
+
+## 🧩 Java Configuration
+
+```java
+package com.subham;
+
+import io.swagger.v3.oas.models.info.Info;
+import io.swagger.v3.oas.models.OpenAPI;
+import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.Configuration;
+
+@Configuration
+public class SwaggerConfig {
+
+    @Bean
+    OpenAPI customOpenAPI() {
+        return new OpenAPI()
+                .info(new Info()
+                        .title("Subham E-Commerce API")
+                        .version("1.0")
+                        .description("Backend API for Subham microservices-based e-commerce app"));
+    }
+}
+```
+
+---
+
+## ⚙️ What It Does
+
+- Registers an OpenAPI bean that configures:
+  - **Title**: `Subham E-Commerce API`
+  - **Version**: `1.0`
+  - **Description**: A clean description for backend consumers
+
+This configuration auto-generates documentation available at:
+- **Swagger UI**: `http://localhost:2610/swagger-ui.html`
+- **OpenAPI JSON**: `http://localhost:2610/v3/api-docs`
+
+---
+
+## 🌐 Swagger UI Example
+
+```mermaid
+graph TD
+    A[Spring Boot App] --> B[SwaggerConfig Bean]
+    B --> C[OpenAPI Object]
+    C --> D[Info: title, version, description]
+    A --> E[SpringDoc Dependency]
+    E --> F[Swagger UI: localhost:8080/swagger-ui.html]
+```
+
+---
+
+## 📦 Dependencies Required
+
+Make sure to include this in your `pom.xml`:
+
+```xml
+<dependency>
+    <groupId>org.springdoc</groupId>
+    <artifactId>springdoc-openapi-starter-webmvc-ui</artifactId>
+    <version>2.5.0</version>
+</dependency>
+```
+
+---
+
+## ✅ Outcome
+
+Once the application is running:
+- Developers can test APIs via Swagger UI.
+- API consumers can view schemas, models, and live endpoints.
+- Easy to maintain and version your backend APIs.
+
+---
+
+## 📌 Notes
+
+- You can add more metadata such as terms of service, license, and contact info using `.info()` fields.
+- For microservices, you can document each service independently or use a central API gateway with aggregated docs.
+
+
